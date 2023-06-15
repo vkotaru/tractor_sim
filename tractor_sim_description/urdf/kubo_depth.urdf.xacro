@@ -144,6 +144,19 @@
     <child link="chassis" />
   </joint>
 
+  <gazebo>
+    <plugin name="base_link_ground_truth" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>base_link/odometry</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <frameName>world</frameName>
+      <xyzOffsets>0 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+  </gazebo>
+
 
   <!-- Wheels -->
   <xacro:front_wheel lr_prefix="left" fr_prefix="front"
@@ -200,6 +213,8 @@ https://github.com/olinrobotics/gravl/wiki/Kubo:-Transforms-->
       </plugin>
     </sensor>
   </gazebo>
+
+
 
   <!-- <joint name="fixed" type="fixed">
     <parent link="base_link" />
